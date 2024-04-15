@@ -3,12 +3,12 @@ program currency;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  main in 'main.pas' {Form17};
+  main in 'main.pas' {frmMain};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TfrmMain, frmMain);
   Application.Run;
 end.

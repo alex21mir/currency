@@ -1,13 +1,15 @@
-object Form17: TForm17
+object frmMain: TfrmMain
   Left = 0
   Top = 0
-  Caption = 'Form17'
-  ClientHeight = 636
-  ClientWidth = 388
+  BorderStyle = ToolWindow
+  Caption = 'Currency'
+  ClientHeight = 640
+  ClientWidth = 400
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  DesignerMasterStyle = 0
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
   object Rectangle1: TRectangle
     Align = Client
     Fill.Kind = Gradient
@@ -22,9 +24,255 @@ object Form17: TForm17
       end>
     Fill.Gradient.StopPosition.X = 1.000000000000000000
     HitTest = False
-    Size.Width = 388.000000000000000000
-    Size.Height = 636.000000000000000000
+    Size.Width = 400.000000000000000000
+    Size.Height = 640.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
+    object Layout1: TLayout
+      Align = Top
+      Margins.Top = 25.000000000000000000
+      Margins.Bottom = 25.000000000000000000
+      Position.Y = 25.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        StyleLookup = 'Edit1Style1'
+        TabOrder = 0
+        KeyboardType = DecimalNumberPad
+        Text = '100'
+        TextSettings.Font.Size = 24.000000000000000000
+        Margins.Left = 25.000000000000000000
+        Size.Width = 225.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style, FontColor]
+        OnChange = Edit1Change
+      end
+      object ComboBox1: TComboBox
+        Align = Right
+        Margins.Left = 25.000000000000000000
+        Margins.Right = 25.000000000000000000
+        Position.X = 275.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 100.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        OnChange = ComboBox1Change
+      end
+    end
+    object laUpdate: TLayout
+      Align = Bottom
+      Margins.Top = 25.000000000000000000
+      Margins.Bottom = 25.000000000000000000
+      Position.Y = 550.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 65.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object circleUpdate: TCircle
+        Align = Center
+        Fill.Color = x50E0E0E0
+        Size.Width = 65.000000000000000000
+        Size.Height = 65.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object ListView1: TListView
+      ItemAppearanceClassName = 'TListItemAppearance'
+      ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+      HeaderAppearanceClassName = 'TListHeaderObjects'
+      FooterAppearanceClassName = 'TListHeaderObjects'
+      AllowSelection = False
+      Align = Client
+      Margins.Left = 25.000000000000000000
+      Margins.Right = 25.000000000000000000
+      Size.Width = 350.000000000000000000
+      Size.Height = 435.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      ItemAppearanceObjects.ItemObjects.Accessory.Visible = False
+      StyleLookup = 'ListView1Style1'
+      OnDeletingItem = ListView1DeletingItem
+      ShowSelection = False
+    end
+    object rErr: TRectangle
+      Align = Client
+      Fill.Kind = None
+      Size.Width = 400.000000000000000000
+      Size.Height = 435.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object Rectangle2: TRectangle
+        Align = Top
+        Fill.Color = xC8FFFFFF
+        Margins.Left = 40.000000000000000000
+        Margins.Right = 40.000000000000000000
+        Position.X = 40.000000000000000000
+        Size.Width = 320.000000000000000000
+        Size.Height = 145.000000000000000000
+        Size.PlatformDefault = False
+        XRadius = 15.000000000000000000
+        YRadius = 15.000000000000000000
+        object ErrText: TLabel
+          Align = Client
+          StyledSettings = [Family, Style]
+          Margins.Left = 15.000000000000000000
+          Margins.Top = 15.000000000000000000
+          Margins.Right = 15.000000000000000000
+          Margins.Bottom = 15.000000000000000000
+          Size.Width = 290.000000000000000000
+          Size.Height = 115.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 20.000000000000000000
+          TextSettings.FontColor = xFFE70909
+          TextSettings.HorzAlign = Center
+          Text = 'ErrText'
+          TabOrder = 0
+        end
+        object ShadowEffect1: TShadowEffect
+          Distance = 3.000000000000000000
+          Direction = 45.000000000000000000
+          Softness = 0.300000011920929000
+          Opacity = 0.600000023841857900
+          ShadowColor = claBlack
+        end
+      end
+    end
+  end
+  object rDelete: TRectangle
+    Fill.Color = x82000000
+    Position.X = 8.000000000000000000
+    Position.Y = 368.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 174.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object Rectangle4: TRectangle
+      Align = Center
+      Fill.Color = xF0FFFFFF
+      Margins.Left = 40.000000000000000000
+      Margins.Right = 40.000000000000000000
+      Size.Width = 257.000000000000000000
+      Size.Height = 145.000000000000000000
+      Size.PlatformDefault = False
+      XRadius = 15.000000000000000000
+      YRadius = 15.000000000000000000
+      object lblAsk: TLabel
+        Align = Client
+        StyledSettings = [Family, Style]
+        Margins.Left = 15.000000000000000000
+        Margins.Top = 15.000000000000000000
+        Margins.Right = 15.000000000000000000
+        Margins.Bottom = 60.000000000000000000
+        Size.Width = 227.000000000000000000
+        Size.Height = 70.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 20.000000000000000000
+        TextSettings.FontColor = xFF0994E7
+        TextSettings.HorzAlign = Center
+        Text = 'Confirn to delete'
+        TabOrder = 0
+        object Button1: TButton
+          Position.X = 8.000000000000000000
+          Position.Y = 80.000000000000000000
+          TabOrder = 5
+          Text = 'YES'
+        end
+        object Button2: TButton
+          Position.X = 146.000000000000000000
+          Position.Y = 80.000000000000000000
+          TabOrder = 4
+          Text = 'NO'
+          OnClick = Button2Click
+        end
+      end
+      object ShadowEffect2: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 45.000000000000000000
+        Softness = 0.300000011920929000
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+      end
+    end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'DriverID=SQLite'
+      'Database=D:\src\myr_test\currency\currency\DB\rates.s3db')
+    LoginPrompt = False
+    Left = 273
+    Top = 178
+  end
+  object qData: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'select ccy||'#39' '#39'||round(:SUMM * (select rate from rates where ccy' +
+        '= :BASE_CCY) / rate,2) as rate'
+      '  from rates'
+      '')
+    Left = 273
+    Top = 242
+    ParamData = <
+      item
+        Name = 'SUMM'
+        DataType = ftFloat
+        ParamType = ptInput
+        Value = 100.000000000000000000
+      end
+      item
+        Name = 'BASE_CCY'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'UAH'
+      end>
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = qData
+    ScopeMappings = <>
+    Left = 144
+    Top = 256
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 20
+    Top = 5
+    object LinkListControlToField1: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'rate'
+      Control = ListView1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+    object LinkListControlToFieldccy: TLinkListControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB2
+      FieldName = 'ccy'
+      Control = ComboBox1
+      FillExpressions = <>
+      FillHeaderExpressions = <>
+      FillBreakGroups = <>
+    end
+  end
+  object qCcy: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select distinct ccy from rates')
+    Left = 273
+    Top = 306
+  end
+  object BindSourceDB2: TBindSourceDB
+    DataSet = qCcy
+    ScopeMappings = <>
+    Left = 192
+    Top = 312
   end
 end
