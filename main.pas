@@ -51,9 +51,11 @@ type
     procedure FDConnection1BeforeConnect(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
+    cur_ccy:string;
     procedure SetErrorText(txt:string);
     procedure LogExcept(code,errtext,msg:string);
     procedure UpdateRate(isAll:boolean);
+    procedure ResetCcy(ccy:string);
   public
     { Public declarations }
   end;
@@ -159,6 +161,17 @@ begin
     SetErrorText(msg);
 end;
 
+procedure TfrmMain.ResetCcy(ccy: string);
+var x:integer;
+begin
+    try
+      x:=ComboBox1.Items.IndexOf(ccy);
+    except
+      x:=0;
+    end;
+    if ComboBox1.Items.Count>x then ComboBox1.ItemIndex:=x;
+end;
+
 procedure TfrmMain.SetErrorText(txt: string);
 begin
   if txt='' then begin  // for hide error box - message is empty
@@ -185,12 +198,14 @@ end;
 procedure TfrmMain.Button1Click(Sender: TObject);
 begin
   try
+    if ComboBox1.ItemIndex>=0 then cur_ccy:=ComboBox1.Items[ComboBox1.ItemIndex];
     qCcy.close;
     qData.close;
   FDTransaction1.StartTransaction;
     qExec.ExecSQL('delete from rates where ccy= :CCY',[lblAsk.TagString]);
   FDTransaction1.commit;
     qCcy.Open;
+    ResetCcy(cur_ccy);
     qData.Open;
   except on e:exception do begin
     if FDTransaction1.Active then FDTransaction1.Rollback;
@@ -217,6 +232,7 @@ var
   JSON:TJSONArray;
   x:integer;
 begin
+  if ComboBox1.ItemIndex>=0 then cur_ccy:=ComboBox1.Items[ComboBox1.ItemIndex];
   qCcy.close;
   qData.close;
   FDTransaction1.StartTransaction;
@@ -240,15 +256,20 @@ begin
             end;
            except on e:exception do begin
             if FDTransaction1.Active then FDTransaction1.Rollback;
-            LogExcept('RESPONCE',e.Message,'Server is not available');
+            LogExcept('RESPONCE',e.Message,'Invalid server responce');
            end;
           end;
 
         if FDTransaction1.Active then FDTransaction1.commit;
-      finally
-        HTTP.Free;
+       SetErrorText('');
+      except on e:exception do begin
+            if FDTransaction1.Active then FDTransaction1.Rollback;
+            LogExcept('REQUEST',e.Message,'Server is not available');
+         end;
       end;
+    HTTP.Free;
     qCcy.Open;
+    ResetCcy(cur_ccy);
     qData.Open;
   except on e:exception do  begin
      if FDTransaction1.Active then FDTransaction1.Rollback;
